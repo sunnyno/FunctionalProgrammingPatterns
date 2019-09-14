@@ -2,7 +2,6 @@ package com.jland.funcpatterns.service;
 
 import com.jland.funcpatterns.entity.House;
 import com.jland.funcpatterns.entity.Wizard;
-import io.vavr.collection.List;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -27,6 +26,4 @@ public class OwlService {
             log.info("I`m going to {}", wizard.getName());
         }
     }
-
-
 }

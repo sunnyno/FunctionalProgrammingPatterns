@@ -11,9 +11,9 @@ public class HouseServiceTest {
     public void welcomeNewStudent() {
         HouseService houseService = new HouseService();
         houseService.welcomeNewStudent(Wizard.builder()
-        .name("Hagrid")
-        .animal(java.util.Optional.of(new Animal("Fang", "dog")))
-        .house(House.GRIFFINDOR)
-        .build()    );
+                .name("Hagrid")
+                .animal(java.util.Optional.of(new Animal("Fang", "dog")))
+                .house(House.GRIFFINDOR)
+                .build());
     }
 }
