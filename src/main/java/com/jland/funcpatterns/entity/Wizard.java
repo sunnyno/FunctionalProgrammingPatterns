@@ -12,5 +12,5 @@ public class Wizard {
     private int age;
     private House house;
     private boolean fromMugleFamily;
-    private Optional<Animal> animal;
+    private Animal animal;
 }

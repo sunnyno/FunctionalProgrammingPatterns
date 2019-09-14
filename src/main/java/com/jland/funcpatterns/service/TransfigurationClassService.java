@@ -30,10 +30,13 @@ public class TransfigurationClassService {
 
 
     public Animal getAnimal(Wizard wizard) {
-        Optional<Animal> animal = wizard.getAnimal();
+        Animal animal = wizard.getAnimal();
         Animal defaultAnimal = new Animal("default", "owl");
-        return animal.map(a -> getAnimal(a, "getting own animal"))
-                .orElse(getAnimal(defaultAnimal, "getting class owl"));
+        if(animal != null){
+            return getAnimal(animal, "getting own animal");
+        }else {
+            return getAnimal(defaultAnimal, "getting class owl");
+        }
     }
 
     private Animal getAnimal(Animal animal, String message) {
