@@ -11,22 +11,24 @@ public class Either<R> {
         this.left = left;
     }
 
-    public static <R, L> Either<R> right(R value) {
+    private static <R, L> Either<R> right(R value) {
         return new Either<>(value, null);
     }
 
-    public static <R, L> Either<R> left(Exception value) {
+    private static <R, L> Either<R> left(Exception value) {
         return new Either<>(null, value);
     }
 
     public static <T, R> Function<T, Either<R>> lift(CheckedFunction<T, R> checkedFunction) {
-        return t -> {
-            try {
-                return Either.right(checkedFunction.apply(t));
-            } catch (Exception e) {
-                return Either.left(e);
-            }
-        };
+        return t -> tryAndGetEither(checkedFunction, t);
+    }
+
+    private static <T, R> Either<R> tryAndGetEither(CheckedFunction<T, R> checkedFunction, T t) {
+        try {
+            return Either.right(checkedFunction.apply(t));
+        } catch (Exception e) {
+            return Either.left(e);
+        }
     }
 
     @Override
