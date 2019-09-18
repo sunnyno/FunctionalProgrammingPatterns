@@ -39,7 +39,7 @@ public class TransfigurationClassService {
     }
 
     private Animal getAndLogAnimal(Animal animal, String message) {
-        System.out.println(message);
+        log.info(message);
         return animal;
     }
 }
