@@ -11,14 +11,6 @@ public class Either<R> {
         this.left = left;
     }
 
-    private static <R, L> Either<R> right(R value) {
-        return new Either<>(value, null);
-    }
-
-    private static <R, L> Either<R> left(Exception value) {
-        return new Either<>(null, value);
-    }
-
     public static <T, R> Function<T, Either<R>> lift(CheckedFunction<T, R> checkedFunction) {
         return t -> tryAndGetEither(checkedFunction, t);
     }
@@ -30,6 +22,15 @@ public class Either<R> {
             return Either.left(e);
         }
     }
+
+    private static <R, L> Either<R> right(R value) {
+        return new Either<>(value, null);
+    }
+
+    private static <R, L> Either<R> left(Exception value) {
+        return new Either<>(null, value);
+    }
+
 
     @Override
     public String toString() {
