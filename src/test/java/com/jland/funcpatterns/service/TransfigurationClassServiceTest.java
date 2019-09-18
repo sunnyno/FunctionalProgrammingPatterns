@@ -6,7 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Optional;
+
 @Log4j2
 public class TransfigurationClassServiceTest {
 
@@ -18,14 +18,14 @@ public class TransfigurationClassServiceTest {
                 new Animal("Scebbers", "rat"),
                 new Animal("Fluffy", "cat"));
         List<String> waterGoblets = transfigurationClassService.getWaterGoblets(animals);
-        waterGoblets.forEach(System.out::println);
+        waterGoblets.forEach(log::info);
     }
 
     @Test
     public void getAnimals(){
         Animal animal = new TransfigurationClassService()
                 .getAnimal(Wizard.builder()
-                        .animal(Optional.of(new Animal("Scabbers", "rat")))
+                        .animal(new Animal("Scabbers", "rat"))
                         .build());
         log.info("Transfigure " + animal);
     }
