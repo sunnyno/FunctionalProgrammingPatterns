@@ -6,16 +6,15 @@ import com.jland.funcpatterns.exception.BrokenWandException;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Log4j2
 public class TransfigurationClassService {
 
     public List<String> getWaterGoblets(List<Animal> animals) {
-        return animals.stream()
-                .map(this::fereverto)
-                .collect(Collectors.toList());
+        return null;
+//                animals.stream()
+//                .map(this::fereverto)
+//                .collect(Collectors.toList());
     }
 
     private String fereverto(Animal animal) throws BrokenWandException {
@@ -31,15 +30,15 @@ public class TransfigurationClassService {
 
     public Animal getAnimal(Wizard wizard) {
         Animal animal = wizard.getAnimal();
-        Animal defaultAnimal = new Animal("default", "owl");
-        if(animal != null){
-            return getAnimal(animal, "getting own animal");
-        }else {
-            return getAnimal(defaultAnimal, "getting class owl");
+        if (animal != null) {
+            return getAndLogAnimal(animal, "getting own animal");
+        } else {
+            Animal defaultAnimal = new Animal("default", "owl");
+            return getAndLogAnimal(defaultAnimal, "getting default owl");
         }
     }
 
-    private Animal getAnimal(Animal animal, String message) {
+    private Animal getAndLogAnimal(Animal animal, String message) {
         System.out.println(message);
         return animal;
     }
